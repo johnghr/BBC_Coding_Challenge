@@ -3,9 +3,9 @@ public class Album {
     private String uuid;
     private String albumTitle;
     private String artist;
-    private int yearReleased;
+    private String yearReleased;
 
-    public Album(String uuid, String albumTitle, String artist, int yearReleased) {
+    public Album(String uuid, String albumTitle, String artist, String yearReleased) {
         this.uuid = uuid;
         this.albumTitle = albumTitle;
         this.artist = artist;
@@ -36,11 +36,11 @@ public class Album {
         this.artist = artist;
     }
 
-    public int getYearReleased() {
+    public String getYearReleased() {
         return yearReleased;
     }
 
-    public void setYearReleased(int yearReleased) {
+    public void setYearReleased(String yearReleased) {
         this.yearReleased = yearReleased;
     }
 }
