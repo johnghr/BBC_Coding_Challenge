@@ -26,4 +26,9 @@ public class AlbumTest {
     public void hasArtist(){
         assertEquals("Kavinsky", album.getArtist());
     }
+
+    @Test
+    public void hasYearReleased(){
+        assertEquals("2011", album.getYearReleased());
+    }
 }
