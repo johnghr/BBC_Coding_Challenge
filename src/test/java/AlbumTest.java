@@ -21,4 +21,9 @@ public class AlbumTest {
     public void hasAlbumTitle(){
         assertEquals("Nightcall", album.getAlbumTitle());
     }
+
+    @Test
+    public void hasArtist(){
+        assertEquals("Kavinsky", album.getArtist());
+    }
 }
