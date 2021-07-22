@@ -16,4 +16,9 @@ public class AlbumTest {
     public void hasUuid(){
         assertEquals("17cd04a4-ef0a-468f-9f47-5d9dbb1c0dbd", album.getUuid());
     }
+
+    @Test
+    public void hasAlbumTitle(){
+        assertEquals("Nightcall", album.getAlbumTitle());
+    }
 }
