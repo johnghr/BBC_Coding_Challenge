@@ -2,11 +2,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class DataScanner {
+public class AlbumReader {
 
     public static void main(String[] args) throws FileNotFoundException{
 
-        //Create instance of scanner
+        //Create an instance of scanner
         Scanner scanner = new Scanner(new File("/Users/john/Desktop/bbc_coding_challenge/src/main/java/rms_albums.csv"));
 
         //Set the delimiter
