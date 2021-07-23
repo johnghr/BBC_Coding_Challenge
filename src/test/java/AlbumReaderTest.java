@@ -19,9 +19,13 @@ public class AlbumReaderTest {
     }
 
     @Test
-    public void albumReaderAddsAlbumsToList(){
+    public void albumReaderReadsAlbumsToList(){
         albumList = new ArrayList<>(albumReader.readAlbums(file));
         assertEquals(12, albumList.size());
+        Album albumTitle = albumList.get(1);
+        assertEquals("Nightcall", albumTitle.getAlbumTitle());
+        Album albumTitleTwo = albumList.get(11);
+        assertEquals("Discovery", albumTitleTwo.getAlbumTitle());
     }
 
 }
