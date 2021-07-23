@@ -1,9 +1,12 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class AlbumService {
 
     private LinkedHashMap<String, Album> albumLinkedHashMap;
+    private String foundAlbum;
 
     public AlbumService(LinkedHashMap<String, Album> albumLinkedHashMap) {
         this.albumLinkedHashMap = albumLinkedHashMap;
@@ -16,5 +19,14 @@ public class AlbumService {
 
     public LinkedHashMap<String, Album> getAlbumLinkedHashMap() {
         return albumLinkedHashMap;
+    }
+
+    public String getAlbumById(String uuid) {
+        if(albumLinkedHashMap.containsKey(uuid) == false){
+            System.out.println("Album was not found");
+        } else {
+            foundAlbum = albumLinkedHashMap.get(uuid).getAlbumTitle();
+        }
+        return foundAlbum;
     }
 }

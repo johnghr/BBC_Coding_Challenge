@@ -30,11 +30,17 @@ public class AlbumServiceTest {
 
     }
 
-
     @Test
     public void albumServiceCanCreateTrack(){
         albumService.createAlbum(uuid, albumTitle, artist, yearReleased);
         int albumLinkedHashMapLength = albumService.getAlbumLinkedHashMap().size();
         assertEquals(13, albumLinkedHashMapLength);
+    }
+
+    @Test
+    public void setAlbumServiceCanGetAlbumById(){
+        albumService.createAlbum(uuid, albumTitle, artist, yearReleased);
+        String result = albumService.getAlbumById(uuid);
+        assertEquals("Franz Ferdinand", result);
     }
 }
