@@ -1,12 +1,12 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import sun.tools.jconsole.JConsole;
+
+import java.util.*;
 
 public class AlbumService {
 
     private LinkedHashMap<String, Album> albumLinkedHashMap;
     private String foundAlbum;
+
 
     public AlbumService(LinkedHashMap<String, Album> albumLinkedHashMap) {
         this.albumLinkedHashMap = albumLinkedHashMap;
@@ -28,5 +28,25 @@ public class AlbumService {
             foundAlbum = albumLinkedHashMap.get(uuid).getAlbumTitle();
         }
         return foundAlbum;
+    }
+
+    public ArrayList<Album> findAllAlbumsByArtist(String artistToFind) {
+        ArrayList<Album> foundAlbums = new ArrayList<>();
+        Iterator iterator = albumLinkedHashMap.entrySet().iterator();
+
+        while(iterator.hasNext()){
+            Map.Entry mapElement = (Map.Entry) iterator.next();
+            Album currentAlbum = (Album)mapElement.getValue();
+            String albumArtist = currentAlbum.getArtist();
+            if(albumArtist.equals(artistToFind)){
+                foundAlbums.add(currentAlbum);
+            }
+        }
+        if (foundAlbums.size() == 0){
+            System.out.println("no albums were found");
+        }
+
+        return foundAlbums;
+
     }
 }

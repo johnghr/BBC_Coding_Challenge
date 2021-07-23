@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 import static org.junit.Assert.assertEquals;
@@ -48,6 +49,12 @@ public class AlbumServiceTest {
 
     @Test
     public void albumServiceCanFindAllAlbumByArtist(){
-
+        ArrayList<Album> foundAlbums = albumService.findAllAlbumsByArtist("Gorillaz");
+        assertEquals(3 ,foundAlbums.size());
+        String albumTitle = foundAlbums.get(0).getAlbumTitle();
+        assertEquals("Demon Days",albumTitle);
+        String albumTitleTwo = foundAlbums.get(1).getAlbumTitle();
+        assertEquals("Plastic Beach", albumTitleTwo);
     }
+
 }
