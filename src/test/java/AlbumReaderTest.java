@@ -23,10 +23,10 @@ public class AlbumReaderTest {
     public void albumReaderReadsAlbumsToList(){
         albumList = albumReader.readAlbums(file);
         assertEquals(12, albumList.size());
-        Album albumTitle = albumList.get(1);
-        assertEquals("Nightcall", albumTitle.getAlbumTitle());
-//        Album albumTitleTwo = albumList.get(11);
-//        assertEquals("Discovery", albumTitleTwo.getAlbumTitle());
+        Album album = albumList.get("17cd04a4-ef0a-468f-9f47-5d9dbb1c0dbd");
+        assertEquals("Nightcall", album.getAlbumTitle());
+        Album albumTitleTwo = albumList.get("f23844ec-3e6f-4e92-afc2-578c3d1fac7a");
+        assertEquals("Discovery", albumTitleTwo.getAlbumTitle());
     }
 
 }
