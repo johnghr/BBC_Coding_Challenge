@@ -1,11 +1,12 @@
 import java.io.File;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 public class AlbumReader {
 
-    public static ArrayList<Album> readAlbums(File file) {
-        ArrayList<Album> albumsList = new ArrayList<>();
+    public static LinkedHashMap<String,Album> readAlbums(File file) {
+        LinkedHashMap<String,Album> albumLinkedHashMap = new LinkedHashMap<>();
 
         //Create an instance of scanner
         try (Scanner scanner = new Scanner(file)) {
@@ -21,7 +22,8 @@ public class AlbumReader {
                 String artist = csvValues[2];
                 String yearReleased = csvValues[3];
                 //construct album instances using csvValues stored in variables
-                albumsList.add(new Album(uuid, albumTitle, artist, yearReleased));
+                Album album = new Album(uuid, albumTitle, artist, yearReleased);
+                albumLinkedHashMap.put(album.getUuid(), album);
 
             }
 
@@ -30,7 +32,7 @@ public class AlbumReader {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return albumsList;
+        return albumLinkedHashMap;
     }
 
 }
