@@ -38,7 +38,7 @@ public class AlbumServiceTest {
         albumService.createAlbum(uuid, albumTitle, artist, yearReleased);
         int albumLinkedHashMapLength = albumService.getAlbumLinkedHashMap().size();
         assertEquals(13, albumLinkedHashMapLength);
-        assertEquals("Franz Ferdinand", albumService.getAlbumById(uuid));
+        assertEquals("Franz Ferdinand", albumService.getAlbumById(uuid).getArtist());
     }
 
     @Test
