@@ -5,7 +5,7 @@ import java.util.*;
 public class AlbumService {
 
     private LinkedHashMap<String, Album> albumLinkedHashMap;
-    private String foundAlbum;
+    private Album foundAlbum;
 
 
     public AlbumService(LinkedHashMap<String, Album> albumLinkedHashMap) {
@@ -21,11 +21,11 @@ public class AlbumService {
         return albumLinkedHashMap;
     }
 
-    public String getAlbumById(String uuid) {
+    public Album getAlbumById(String uuid) {
         if(albumLinkedHashMap.containsKey(uuid) == false){
             System.out.println("Album was not found");
         } else {
-            foundAlbum = albumLinkedHashMap.get(uuid).getAlbumTitle();
+            foundAlbum = albumLinkedHashMap.get(uuid);
         }
         return foundAlbum;
     }
@@ -49,4 +49,22 @@ public class AlbumService {
         return foundAlbums;
 
     }
+
+    public void updateAlbumYearReleased(Album album, String year) {
+        album.setYearReleased(year);
+    }
+
+    public void delete(String uuidToFind) {
+        Iterator iterator = albumLinkedHashMap.entrySet().iterator();
+
+        while(iterator.hasNext()){
+            Map.Entry mapElement = (Map.Entry) iterator.next();
+            Album currentAlbum = (Album)mapElement.getValue();
+            String albumUuid = currentAlbum.getUuid();
+            if(albumUuid.equals(uuidToFind)){
+               albumLinkedHashMap.remove(currentAlbum);
+            }
+        }
+    }
+
 }
