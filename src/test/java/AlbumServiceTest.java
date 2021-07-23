@@ -38,9 +38,16 @@ public class AlbumServiceTest {
     }
 
     @Test
-    public void setAlbumServiceCanGetAlbumById(){
+    public void albumServiceCanGetAlbumById(){
         albumService.createAlbum(uuid, albumTitle, artist, yearReleased);
         String result = albumService.getAlbumById(uuid);
         assertEquals("Franz Ferdinand", result);
+        String resultTwo = albumService.getAlbumById("f337fd51-7bf5-44bf-9553-5826162bc83a");
+        assertEquals(resultTwo, "Pink Noise");
+    }
+
+    @Test
+    public void albumServiceCanFindAllAlbumByArtist(){
+
     }
 }
