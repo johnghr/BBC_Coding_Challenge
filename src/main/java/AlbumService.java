@@ -1,6 +1,7 @@
 import sun.tools.jconsole.JConsole;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class AlbumService {
 
@@ -30,41 +31,19 @@ public class AlbumService {
         return foundAlbum;
     }
 
-    public ArrayList<Album> findAllAlbumsByArtist(String artistToFind) {
-        ArrayList<Album> foundAlbums = new ArrayList<>();
-        Iterator iterator = albumLinkedHashMap.entrySet().iterator();
-
-        while(iterator.hasNext()){
-            Map.Entry mapElement = (Map.Entry) iterator.next();
-            Album currentAlbum = (Album)mapElement.getValue();
-            String albumArtist = currentAlbum.getArtist();
-            if(albumArtist.equals(artistToFind)){
-                foundAlbums.add(currentAlbum);
-            }
-        }
-        if (foundAlbums.size() == 0){
-            System.out.println("no albums were found");
-        }
-
-        return foundAlbums;
-
+    public List<Album> findAllAlbumsByArtist(String artistToFind) {
+        return albumLinkedHashMap.values().stream()
+                .filter(album -> album.getArtist().equals(artistToFind))
+                .collect(Collectors.toList());
     }
 
     public void updateAlbumYearReleased(Album album, String year) {
         album.setYearReleased(year);
     }
 
-    public void delete(String uuidToFind) {
-        Iterator iterator = albumLinkedHashMap.entrySet().iterator();
-
-        while(iterator.hasNext()){
-            Map.Entry mapElement = (Map.Entry) iterator.next();
-            Album currentAlbum = (Album)mapElement.getValue();
-            String albumUuid = currentAlbum.getUuid();
-            if(albumUuid.equals(uuidToFind)){
-               albumLinkedHashMap.remove(currentAlbum);
-            }
-        }
+    public void delete (String uuidToFind) {
+        Album value = albumLinkedHashMap.remove(uuidToFind);
     }
+
 
 }

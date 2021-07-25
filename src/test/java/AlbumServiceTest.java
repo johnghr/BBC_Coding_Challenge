@@ -2,8 +2,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -34,7 +34,7 @@ public class AlbumServiceTest {
     }
 
     @Test
-    public void albumServiceCanCreateTrack(){
+    public void albumServiceCanCreateAlbum(){
         albumService.createAlbum(uuid, albumTitle, artist, yearReleased);
         int albumLinkedHashMapLength = albumService.getAlbumLinkedHashMap().size();
         assertEquals(13, albumLinkedHashMapLength);
@@ -52,7 +52,7 @@ public class AlbumServiceTest {
 
     @Test
     public void albumServiceCanFindAllAlbumByArtist(){
-        ArrayList<Album> foundAlbums = albumService.findAllAlbumsByArtist("Gorillaz");
+        List<Album> foundAlbums = albumService.findAllAlbumsByArtist("Gorillaz");
         assertEquals(3 ,foundAlbums.size());
         String albumTitle = foundAlbums.get(0).getAlbumTitle();
         assertEquals("Demon Days",albumTitle);
@@ -69,8 +69,8 @@ public class AlbumServiceTest {
 
     @Test
     public void albumServiceCanRemoveAlbum(){
-        albumService.delete(uuid);
-        assertEquals(12, albumService.getAlbumLinkedHashMap().size());
+        albumService.delete("22ab5174-4caa-472a-aae2-55c58adfd338");
+        assertEquals(11, albumService.getAlbumLinkedHashMap().size());
     }
 
 }
